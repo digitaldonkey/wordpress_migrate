@@ -21,14 +21,17 @@ use Drupal\migrate\Row;
  * )
  */
 class WordPressAliasProcess extends ProcessPluginBase {
-  
+
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    // expect $value to be an absolute URL
+
+    // Expect $value to be an absolute URL.
     $parsed = parse_url($value);
-    if($parsed === false) {
+    if ($parsed === FALSE) {
       return $value;
-    } else {
+    }
+    else {
       return preg_replace('|/$|', '', $parsed['path']);
     }
   }
+
 }

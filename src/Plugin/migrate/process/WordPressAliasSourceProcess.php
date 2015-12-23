@@ -21,9 +21,17 @@ use Drupal\node\Entity\Node;
  * )
  */
 class WordPressAliasSourceProcess extends ProcessPluginBase {
-  
+
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    $node = Node::load($value);
-    return $node->url();
+    if (intval($value)) {
+      $node = Node::load($value);
+      $url = $node->url();
+      $return = $url;
+    }
+    else {
+      $return = FALSE;
+    }
+    return $return;
   }
+
 }
