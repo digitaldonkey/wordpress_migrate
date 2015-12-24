@@ -8,5 +8,4 @@ dependencies:
   - migrate
   - migrate_source_xml
   - migrate_plus
-  - migrate_manifest
   - migrate_tools
